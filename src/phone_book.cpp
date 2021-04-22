@@ -51,6 +51,39 @@ void PhoneBook::SortByPhone()
     std::sort(m_data.begin(), m_data.end(), [](const auto& left, const auto& right){ return left.second < right.second; });
 }
 
+std::tuple<std::string, PhoneNumber> PhoneBook::GetPhoneNumber(const std::string& last_name) const
+{
+    size_t count = 0;
+    PhoneNumber phone_number;
+    std::for_each(m_data.cbegin()
+                  , m_data.cend()
+                  , [&last_name, &count, &phone_number](const auto& data)
+                  {
+                      if (data.first.m_last_name == last_name)
+                      {
+                          ++count;
+                          phone_number = data.second;
+                      }
+                  });
+    return {count > 0 ? (count == 1 ? "" : "found more than 1")
+                      : "not found"
+           , std::move(phone_number)};
+}
+
+void PhoneBook::ChangePhoneNumber(const Person& person, const PhoneNumber& number)
+{
+    auto it_find = std::find_if(m_data.begin()
+                               , m_data.end()
+                               , [&person](const auto& data)
+                               {
+                                    return data.first == person;
+                               });
+    if (it_find != m_data.end() && not (it_find->second == number))
+    {
+        it_find->second = number;
+    }
+}
+
 std::ostream& operator<<(std::ostream& os, const PhoneBook& phone_number)
 {
     for (const auto& [person, phone] : phone_number.m_data)

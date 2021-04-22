@@ -20,10 +20,10 @@ struct Person
         return std::tie(m_last_name, m_first_name, m_patronymic) <
                std::tie(other.m_last_name, other.m_first_name, other.m_patronymic);
     }
-
-    std::string m_first_name;
-    std::string m_last_name;
-    std::optional<std::string> m_patronymic;
+    // data
+    std::string m_first_name{};
+    std::string m_last_name{};
+    std::optional<std::string> m_patronymic{};
 };
 
 inline std::ostream& operator<<(std::ostream& os, const Person& person)

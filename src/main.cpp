@@ -17,15 +17,31 @@ int main()
     std::cout << book;
 
     std::cout << "-----GetPhoneNumber-----" << std::endl;
-    //auto print_phone_number = // лямбда функция, которая принимает фамилию и выводит номер телефона этого человека, либо строку с ошибкой
+    auto print_phone_number = [&book](const std::string& last_name)
+    {
+        auto phone_number = book.GetPhoneNumber(last_name);
+        const std::string& error = std::get<std::string>(phone_number);
+
+        std::cout << std::left << std::setw(FILD_WIDTH) << last_name << " ";
+
+        if (error.empty())
+        {
+            std::cout << std::get<PhoneNumber>(phone_number);
+        }
+        else
+        {
+            std::cout << error;
+        }
+        std::cout << std::endl;
+    };// лямбда функция, которая принимает фамилию и выводит номер телефона этого человека, либо строку с ошибкой
 
     // вызовы лямбды
-//    print_phone_number("Ivanov");
-//    print_phone_number("Petrov");
+    print_phone_number("Ivanov");
+    print_phone_number("Petrov");
 
-//    std::cout << "----ChangePhoneNumber----" << endl;
-//    book.ChangePhoneNumber(Person{ "Kotov", "Vasilii", "Eliseevich" },                	PhoneNumber{7, 123, "15344458", nullopt});
-//    book.ChangePhoneNumber(Person{ "Mironova", "Margarita", "Vladimirovna" }, PhoneNumber{ 16, 465, "9155448", 13 });
+    std::cout << "----ChangePhoneNumber----" << std::endl;
+    book.ChangePhoneNumber(Person{ "Vasilii", "Kotov", "Eliseevich" }, PhoneNumber{7, 123, "15344458", std::nullopt});
+    book.ChangePhoneNumber(Person{ "Margarita", "Mironova", "Vladimirovna" }, PhoneNumber{ 16, 465, "9155448", 13 });
     std::cout << book;
     return 0;
 }
