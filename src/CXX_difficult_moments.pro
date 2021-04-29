@@ -15,4 +15,5 @@ SOURCES += main.cpp \
 HEADERS += \
     person.h \
     phone_book.h \
-    phone_number.h
+    phone_number.h \
+    timer.h

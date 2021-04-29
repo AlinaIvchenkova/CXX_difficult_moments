@@ -3,9 +3,13 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <iterator>
+#include <string>
 
 namespace
 {
+
+const std::string vowel = "ауоыиэяюёе";
 
 template <typename T>
 void Swap( T* const rh,  T* const lh)
@@ -113,6 +117,49 @@ int main()
         SortPointers(vp);
 
         std::cout << vp;
+
+        std::ifstream file("/home/user/projects/CXX_difficult_moments/src/war_and_peace.txt");
+
+        size_t count = 0;
+
+        std::for_each(std::istream_iterator<std::string>(file)
+                      , std::istream_iterator<std::string>()
+                      , [&count](const std::string& string)
+                      {
+                            count += std::count_if(
+                                string.cbegin()
+                                , string.cend()
+                                , [](char c){ return vowel.find(std::tolower(c)) != std::string::npos; });
+
+                      });
+
+        std::cout << "count_if + .find count: " << count << std::endl;
+
+        count = 0;
+
+        //file.seekg(0);
+
+        std::for_each(std::istream_iterator<std::string>(file)
+                      , std::istream_iterator<std::string>()
+                      , [&count](const std::string& string)
+                      {
+                          count += std::count_if(
+                              string.cbegin()
+                              , string.cend()
+                              , [](auto c) -> bool
+                              {
+                                  for (auto letter : vowel)
+                                  {
+                                      if (letter == std::tolower(c))
+                                          return true;
+                                  }
+
+                                  return false;
+                              });
+
+                      });
+
+        std::cout << "count_if + for count: " << count << std::endl;
 
     }
 
