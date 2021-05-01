@@ -1,51 +1,18 @@
 #include "phone_book.h"
 #include "timer.h"
+#include "functions.h"
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <iterator>
 #include <string>
+#include <fstream>
 
-namespace
-{
+#include <locale>
+#include <codecvt>
 
-const std::string vowel = "ауоыиэяюёе";
-
-template <typename T>
-void Swap( T* const rh,  T* const lh)
-{
-    if (rh == nullptr || lh == nullptr)
-    {
-        return;
-    }
-
-    const T tmp = std::move(*rh);
-    *rh = std::move(*lh);
-    *lh = std::move(tmp);
-}
-
-template <typename T>
-void SortPointers(std::vector<T*>& data)
-{
-    std::sort(data.begin(), data.end(), [](const auto& rh, const auto& lh)
-                                          {
-                                            return *rh < *lh;
-                                          });
-}
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const std::vector<T*>& data)
-{
-    for (size_t i = 0; i < data.size(); ++i)
-    {
-        os << (i == 0 ? "" : ", ") << *data[i];
-    }
-
-    return os << std::endl;
-}
-
-}
+static const std::wstring vowel = L"ауоыиэяюёе";
 
 int main()
 {
@@ -122,22 +89,27 @@ int main()
 
         std::cout << std::endl;
 
-        std::ifstream file("/home/alina/projects/CXX_difficult_moments/src/war_and_peace.txt");
+        std::wifstream file("/home/alina/projects/CXX_difficult_moments/src/war_and_peace.txt");
+
+        std::wstring wstr;
+
+        // apply BOM-sensitive UTF-16 facet
+        file.imbue(std::locale(file.getloc(), new std::codecvt_utf8<wchar_t, 0x10ffff, std::consume_header>));
 
         size_t count = 0;
 
         Timer t_1("count_if + .find");
 
-        std::for_each(std::istream_iterator<std::string>(file)
-                      , std::istream_iterator<std::string>()
-                      , [&count](const std::string& word)
+        std::for_each(std::istream_iterator<std::wstring, wchar_t>(file)
+                      , std::istream_iterator<std::wstring, wchar_t>()
+                      , [&count](const auto& word)
                       {
                             count += std::count_if(
                                 word.cbegin()
                                 , word.cend()
-                                , [](char letter)
+                                , [](wchar_t letter)
                                 {
-                                    return vowel.find(static_cast<char>(std::tolower(letter))) != std::string::npos;
+                                    return vowel.find(static_cast<wchar_t>(std::tolower(letter))) != std::wstring::npos;
                                 });
 
                       });
@@ -152,9 +124,9 @@ int main()
 
         Timer t_2("count_if + for");
 
-        std::for_each(std::istream_iterator<std::string>(file)
-                      , std::istream_iterator<std::string>()
-                      , [&count](const std::string& word)
+        std::for_each(std::istream_iterator<std::wstring, wchar_t>(file)
+                      , std::istream_iterator<std::wstring, wchar_t>()
+                      , [&count](const auto& word)
                       {
                           count += std::count_if(
                               word.cbegin()
@@ -163,7 +135,7 @@ int main()
                               {
                                   for (auto vowel_letter : vowel)
                                   {
-                                      if (vowel_letter == static_cast<char>(std::tolower(letter)))
+                                      if (vowel_letter == static_cast<wchar_t>(std::tolower(letter)))
                                       {
                                           return true;
                                       }
@@ -184,13 +156,13 @@ int main()
 
         Timer t_3("for + .find");
 
-        std::for_each(std::istream_iterator<std::string>(file)
-                      , std::istream_iterator<std::string>()
-                      , [&count](const std::string& word)
+        std::for_each(std::istream_iterator<std::wstring, wchar_t>(file)
+                      , std::istream_iterator<std::wstring, wchar_t>()
+                      , [&count](const std::wstring& word)
                       {
                             for (auto letter : word)
                             {
-                                if (vowel.find(static_cast<char>(std::tolower(letter))) != std::string::npos)
+                                if (vowel.find(static_cast<wchar_t>(std::tolower(letter))) != std::string::npos)
                                 {
                                     ++count;
                                 }
@@ -208,18 +180,17 @@ int main()
 
         Timer t_4("for + for");
 
-        std::for_each(std::istream_iterator<std::string>(file)
-                      , std::istream_iterator<std::string>()
-                      , [&count](const std::string& word)
+        std::for_each(std::istream_iterator<std::wstring, wchar_t>(file)
+                      , std::istream_iterator<std::wstring, wchar_t>()
+                      , [&count](const std::wstring& word)
                       {
                             for (auto letter : word)
                             {
                                 for (auto vowel_letter : vowel)
                                 {
-                                    if (vowel_letter == static_cast<char>(std::tolower(letter)))
+                                    if (vowel_letter == static_cast<wchar_t>(std::tolower(letter)))
                                     {
                                         ++count;
-                                        break;
                                     }
                                 }
                             }

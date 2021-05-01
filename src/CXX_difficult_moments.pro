@@ -16,4 +16,5 @@ HEADERS += \
     person.h \
     phone_book.h \
     phone_number.h \
-    timer.h
+    timer.h \
+    functions.h
