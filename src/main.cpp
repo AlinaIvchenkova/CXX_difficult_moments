@@ -1,4 +1,5 @@
 #include "phone_book.h"
+#include "timer.h"
 
 #include <iostream>
 #include <vector>
@@ -91,6 +92,7 @@ int main()
     }
     {// 2 memory model and runtime
 
+        std::cout << std::endl << "----memory model and runtime----" << std::endl;
         int a = 7;
         int b = 4;
 
@@ -118,40 +120,53 @@ int main()
 
         std::cout << vp;
 
-        std::ifstream file("/home/user/projects/CXX_difficult_moments/src/war_and_peace.txt");
+        std::cout << std::endl;
+
+        std::ifstream file("/home/alina/projects/CXX_difficult_moments/src/war_and_peace.txt");
 
         size_t count = 0;
 
+        Timer t_1("count_if + .find");
+
         std::for_each(std::istream_iterator<std::string>(file)
                       , std::istream_iterator<std::string>()
-                      , [&count](const std::string& string)
+                      , [&count](const std::string& word)
                       {
                             count += std::count_if(
-                                string.cbegin()
-                                , string.cend()
-                                , [](char c){ return vowel.find(std::tolower(c)) != std::string::npos; });
+                                word.cbegin()
+                                , word.cend()
+                                , [](char letter)
+                                {
+                                    return vowel.find(static_cast<char>(std::tolower(letter))) != std::string::npos;
+                                });
 
                       });
 
-        std::cout << "count_if + .find count: " << count << std::endl;
+        t_1.print();
+        std::cout << "count_if + .find count: " << count << std::endl << std::endl;
 
         count = 0;
 
-        //file.seekg(0);
+        file.clear();
+        file.seekg(0, std::ios::beg);
+
+        Timer t_2("count_if + for");
 
         std::for_each(std::istream_iterator<std::string>(file)
                       , std::istream_iterator<std::string>()
-                      , [&count](const std::string& string)
+                      , [&count](const std::string& word)
                       {
                           count += std::count_if(
-                              string.cbegin()
-                              , string.cend()
-                              , [](auto c) -> bool
+                              word.cbegin()
+                              , word.cend()
+                              , [](auto letter) -> bool
                               {
-                                  for (auto letter : vowel)
+                                  for (auto vowel_letter : vowel)
                                   {
-                                      if (letter == std::tolower(c))
+                                      if (vowel_letter == static_cast<char>(std::tolower(letter)))
+                                      {
                                           return true;
+                                      }
                                   }
 
                                   return false;
@@ -159,8 +174,59 @@ int main()
 
                       });
 
-        std::cout << "count_if + for count: " << count << std::endl;
+        t_2.print();
+        std::cout << "count_if + for count: " << count << std::endl << std::endl;
 
+        count = 0;
+
+        file.clear();
+        file.seekg(0, std::ios::beg);
+
+        Timer t_3("for + .find");
+
+        std::for_each(std::istream_iterator<std::string>(file)
+                      , std::istream_iterator<std::string>()
+                      , [&count](const std::string& word)
+                      {
+                            for (auto letter : word)
+                            {
+                                if (vowel.find(static_cast<char>(std::tolower(letter))) != std::string::npos)
+                                {
+                                    ++count;
+                                }
+                            }
+                      });
+
+        t_3.print();
+        std::cout << "for + .find count: " << count << std::endl << std::endl;
+
+
+        count = 0;
+
+        file.clear();
+        file.seekg(0, std::ios::beg);
+
+        Timer t_4("for + for");
+
+        std::for_each(std::istream_iterator<std::string>(file)
+                      , std::istream_iterator<std::string>()
+                      , [&count](const std::string& word)
+                      {
+                            for (auto letter : word)
+                            {
+                                for (auto vowel_letter : vowel)
+                                {
+                                    if (vowel_letter == static_cast<char>(std::tolower(letter)))
+                                    {
+                                        ++count;
+                                        break;
+                                    }
+                                }
+                            }
+                      });
+
+        t_4.print();
+        std::cout << "for + for count: " << count << std::endl << std::endl;
     }
 
     return 0;
