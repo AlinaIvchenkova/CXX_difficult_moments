@@ -1,27 +1,36 @@
 #include "range.h"
 
+#include <cmath>
+
 template<typename T>
 range<T>::range(T min, T max, T step) : m_min(min), m_max(max), m_step(step)
 {
-    static_assert (std::is_integral<T>::value, "type must be numeric");
+    static_assert(std::is_arithmetic_v<T>, "type must be numeric");
 }
 
 template<typename T>
-T range<T>::operator[](size_t index)
+size_t range<T>::size() const
 {
-    return (m_min + index * m_step);
-}
+    size_t size = std::round((m_max - m_min) / m_step);
 
-template<typename T>
-size_t range<T>::size()
-{
-    return static_cast<size_t>((m_max - m_min) / m_step);
+    if (m_min + static_cast<T>(size) * m_step < m_max)
+    {
+        size++;
+    }
+
+    return size;
 }
 
 template<typename T>
 typename range<T>::value_type range<T>::step() const
 {
     return m_step;
+}
+
+template<typename T>
+typename range<T>::value_type range<T>::min() const
+{
+    return m_min;
 }
 
 template<typename T>
@@ -66,19 +75,11 @@ typename range_iterator<T>::self_type range_iterator<T>::operator++(int)
 template<typename T>
 bool range_iterator<T>::operator==(const range_iterator::self_type& other) const
 {
-    return (m_range == other.m_range) && (equals<value_type>(m_value, other.m_value, m_range->step()));
+    return (m_range == other.m_range) && (std::fabs(m_value - other.m_value) <= 1.e-22);
 }
 
 template<typename T>
 bool range_iterator<T>::operator!=(const range_iterator::self_type& other) const
 {
-    return !(*this == other);
+    return !(*this == other) && (std::fabs(m_value - m_range->min())  / m_range->step()) < m_range->size(); // защита от бесконечного цикла
 }
-
-template<typename T>
-range_iterator<T>::operator value_type() const
-{
-    return m_value;
-}
-
-

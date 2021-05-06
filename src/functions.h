@@ -4,6 +4,7 @@
 #include <list>
 #include <algorithm>
 #include <iostream>
+#include <type_traits>
 
 template <typename T>
 void Swap(T* const rh,  T* const lh)
@@ -38,25 +39,18 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T*>& data)
     return os << std::endl;
 }
 
-template <typename T, typename TA, template <typename = T, typename = TA> class Container>
-std::ostream& print_container(const Container<>& data)
+template <typename T, typename Allocator, template <typename = T, typename = Allocator> class Container
+         , std::enable_if_t<not std::is_same_v<std::string, Container<T, Allocator>>, bool> = true
+         >
+std::ostream& operator<<(std::ostream& os, const Container<>& data)
 {
     for (auto it = data.cbegin(); it != data.cend(); ++it)
     {
-        std::cout << (it == data.cbegin() ? "" : ", ") << *it;
+        os << (it == data.cbegin() ? "" : ", ") << *it;
     }
 
-    return std::cout << std::endl;
+    return os << std::endl;
 }
 
 
 void average(std::list<double>& list);
-
-template<typename R> bool equals(R a, R b, R e)
-{
-    return a == b;
-}
-
-template<> bool equals(double a, double b, double e);
-
-template<> bool equals(float a, float b, float e);

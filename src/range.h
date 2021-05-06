@@ -14,10 +14,9 @@ public:
 
     range(T min, T max, T step = T(1));
 
-    T operator[](size_t index);
-
-    size_t size();
+    size_t size() const;
     value_type step() const;
+    value_type min() const;
 
     range_iterator<range<T>> begin();
     range_iterator<range<T>> end();
@@ -38,8 +37,6 @@ public:
 
     range_iterator(const range_type* const range, value_type start_value);
 
-    operator value_type() const;
-
     value_type& operator*();
 
     self_type& operator++();
@@ -47,9 +44,7 @@ public:
     self_type operator++(int);
 
 
-
     bool operator==(const self_type& other) const;
-
     bool operator!=(const self_type& other) const;
 
 private:

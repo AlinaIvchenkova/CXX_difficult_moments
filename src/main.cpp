@@ -205,11 +205,11 @@ int main()
 
         std::list<double> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-        print_container(nums);
+        std::cout << nums;
 
         average(nums);
 
-        print_container(nums);
+        std::cout << nums;
 
         Matrix m1(2, 2, std::vector<int>{11, -2, 7, 5});
 
@@ -219,13 +219,44 @@ int main()
 
         std::cout << m2.determinant().value() << std::endl;
 
-        std::cout << '[';
-        for (int i : range<int>(10, 12))
+        Matrix m3(3, 3, std::vector<double>{1, 0, -2, 0.5, 3, 1, 0, 2, -1});
+
+        std::cout << m3.determinant().value() << std::endl;
+
+        for (int i : range<int>(10, 200))
         {
             std::cout << i << ' ';
         }
 
-        std::cout << ']' << std::endl;
+        std::cout << std::endl;
+
+        for (int i : range<int>(10, 200, 3))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (int i : range<int>(10, 200, 2))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (double i : range<double>(10.2143232, 212.323, 2.34543245))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (double i : range<double>(-212.323, -10.2143232, 2.34543245))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
     }
 
     return 0;
