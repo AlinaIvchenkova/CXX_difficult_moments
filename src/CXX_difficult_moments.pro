@@ -10,11 +10,17 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    phone_book.cpp
+    phone_book.cpp \
+    functions.cpp
+
 
 HEADERS += \
     person.h \
     phone_book.h \
     phone_number.h \
     timer.h \
-    functions.h
+    functions.h \
+    matrix.h \
+    matrix.hpp \
+    range.h \
+    range.hpp
