@@ -1,6 +1,8 @@
 #include "phone_book.h"
 #include "timer.h"
 #include "functions.h"
+#include "matrix.h"
+#include "range.h"
 
 #include <iostream>
 #include <vector>
@@ -93,7 +95,7 @@ int main()
 
         std::wstring wstr;
 
-        // apply BOM-sensitive UTF-16 facet
+        // apply BOM-sensitive UTF-8 facet
         file.imbue(std::locale(file.getloc(), new std::codecvt_utf8<wchar_t, 0x10ffff, std::consume_header>));
 
         size_t count = 0;
@@ -198,6 +200,63 @@ int main()
 
         t_4.print();
         std::cout << "for + for count: " << count << std::endl << std::endl;
+    }
+    {// 3 STL_containers_seq
+
+        std::list<double> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        std::cout << nums;
+
+        average(nums);
+
+        std::cout << nums;
+
+        Matrix m1(2, 2, std::vector<int>{11, -2, 7, 5});
+
+        std::cout << m1.determinant().value() << std::endl;
+
+        Matrix m2(3, 3, std::vector<int>{3, 3, -1, 4, 1, 3, 1, -2, -2});
+
+        std::cout << m2.determinant().value() << std::endl;
+
+        Matrix m3(3, 3, std::vector<double>{1, 0, -2, 0.5, 3, 1, 0, 2, -1});
+
+        std::cout << m3.determinant().value() << std::endl;
+
+        for (int i : range<int>(10, 200))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (int i : range<int>(10, 200, 3))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (int i : range<int>(10, 200, 2))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (double i : range<double>(10.2143232, 212.323, 2.34543245))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
+
+        for (double i : range<double>(-212.323, -10.2143232, 2.34543245))
+        {
+            std::cout << i << ' ';
+        }
+
+        std::cout << std::endl;
     }
 
     return 0;
