@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <algorithm>
 #include <iterator>
 #include <string>
@@ -203,6 +204,7 @@ int main()
     }
     {// 3 STL_containers_seq
 
+        std::cout << std::endl << "----STL containers seq----" << std::endl;
         std::list<double> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         std::cout << nums;
@@ -257,6 +259,36 @@ int main()
         }
 
         std::cout << std::endl;
+    }
+    {// 4 algorithms
+
+        std::cout << std::endl << "----algorithms----" << std::endl;
+        std::vector<int> vector{7, -8, 2, -35, 1, 53, -78, 105, 44, 65, 44, -22};
+        std::list<double> list{2.435, 1.432, 2.673, 73.543, 89.325, 5.341, 0.002, 0.111};
+        std::deque<size_t> deque{64, 108, 63, 563, 1, 3, 1, 65, 432, 643, 134, 21};
+
+        std::sort(vector.begin(), vector.end());
+        list.sort();
+        std::sort(deque.begin(), deque.end());
+
+        std::cout << vector;
+        std::cout << list;
+        std::cout << deque;
+
+        std::cout << std::endl << "----insert_sorted----" << std::endl;
+
+        insert_sorted(vector, 44);
+        insert_sorted(vector, 0);
+
+        insert_sorted(list, -1.);
+        insert_sorted(list, -1.22);
+
+        insert_sorted(deque, static_cast<size_t>(1000));
+        insert_sorted(deque, static_cast<size_t>(1));
+
+        std::cout << vector;
+        std::cout << list;
+        std::cout << deque;
     }
 
     return 0;
