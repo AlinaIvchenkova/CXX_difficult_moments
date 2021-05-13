@@ -11,6 +11,7 @@
 #include <iterator>
 #include <string>
 #include <fstream>
+#include <numeric>
 
 #include <locale>
 #include <codecvt>
@@ -329,6 +330,17 @@ int main()
         std::cout << std::endl << "----errors----" << std::endl;
 
         std::cout << errors;
+
+        double error = std::inner_product(digital_signals.cbegin()
+                                          , digital_signals.cend()
+                                          , analog_signals.cbegin()
+                                          , 0.f
+                                          , std::plus<double>()
+                                          , [](double digital_signal, double analog_signal){ return (digital_signal - analog_signal) * (digital_signal - analog_signal); });
+
+        std::cout << std::endl << "----error----" << std::endl;
+
+        std::cout << error << std::endl;
     }
 
     return 0;
