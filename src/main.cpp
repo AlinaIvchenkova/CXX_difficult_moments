@@ -289,6 +289,46 @@ int main()
         std::cout << vector;
         std::cout << list;
         std::cout << deque;
+
+
+        unsigned int amplitude = 3;
+        std::vector<double> analog_signals(100);
+        std::generate(analog_signals.begin()
+                     , analog_signals.end()
+                     , [&amplitude](){ return amplitude * (-1.f + static_cast<double>(rand()) * 2 / RAND_MAX); });
+
+        std::vector<int> digital_signals;
+        digital_signals.reserve(analog_signals.size());
+
+        std::transform(analog_signals.cbegin()
+                      , analog_signals.cend()
+                      , std::back_inserter(digital_signals)
+                      , [](double signal){ return static_cast<int>(signal); });
+
+        std::cout << std::endl << "----analog_signals----" << std::endl;
+
+        //std::cout << analog_signals;
+        copy(analog_signals.cbegin(), analog_signals.cend(), std::ostream_iterator<double>(std::cout, " "));
+        std::cout << std::endl;
+
+        std::cout << std::endl << "----digital_signals----" << std::endl;
+
+        //std::cout << digital_signals;
+        copy(digital_signals.cbegin(), digital_signals.cend(), std::ostream_iterator<int>(std::cout, " "));
+        std::cout << std::endl;
+
+        std::vector<double> errors;
+        errors.reserve(analog_signals.size());
+
+        std::transform(digital_signals.cbegin()
+                      , digital_signals.cend()
+                      , analog_signals.cbegin()
+                      , std::back_inserter(errors)
+                      , [](double digital_signal, double analog_signal){ return digital_signal - analog_signal; });
+
+        std::cout << std::endl << "----errors----" << std::endl;
+
+        std::cout << errors;
     }
 
     return 0;
