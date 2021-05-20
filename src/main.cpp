@@ -342,6 +342,9 @@ int main()
 
         std::cout << error << std::endl;
     }
+    {// 5 associative containers
+
+    }
 
     return 0;
 }
