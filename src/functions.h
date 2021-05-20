@@ -52,5 +52,12 @@ std::ostream& operator<<(std::ostream& os, const Container<>& data)
     return os << std::endl;
 }
 
+template <typename T, typename Allocator, template <typename = T, typename = Allocator> class Container>
+void insert_sorted(Container<>& data, const T& value)
+{
+    auto lower_bound = std::lower_bound(data.begin(), data.end(), value);
+    data.insert(lower_bound, value);
+}
+
 
 void average(std::list<double>& list);

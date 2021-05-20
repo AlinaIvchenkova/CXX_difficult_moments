@@ -6,10 +6,12 @@
 
 #include <iostream>
 #include <vector>
+#include <deque>
 #include <algorithm>
 #include <iterator>
 #include <string>
 #include <fstream>
+#include <numeric>
 
 #include <locale>
 #include <codecvt>
@@ -203,6 +205,7 @@ int main()
     }
     {// 3 STL_containers_seq
 
+        std::cout << std::endl << "----STL containers seq----" << std::endl;
         std::list<double> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         std::cout << nums;
@@ -257,6 +260,87 @@ int main()
         }
 
         std::cout << std::endl;
+    }
+    {// 4 algorithms
+
+        std::cout << std::endl << "----algorithms----" << std::endl;
+        std::vector<int> vector{7, -8, 2, -35, 1, 53, -78, 105, 44, 65, 44, -22};
+        std::list<double> list{2.435, 1.432, 2.673, 73.543, 89.325, 5.341, 0.002, 0.111};
+        std::deque<size_t> deque{64, 108, 63, 563, 1, 3, 1, 65, 432, 643, 134, 21};
+
+        std::sort(vector.begin(), vector.end());
+        list.sort();
+        std::sort(deque.begin(), deque.end());
+
+        std::cout << vector;
+        std::cout << list;
+        std::cout << deque;
+
+        std::cout << std::endl << "----insert_sorted----" << std::endl;
+
+        insert_sorted(vector, 44);
+        insert_sorted(vector, 0);
+
+        insert_sorted(list, -1.);
+        insert_sorted(list, -1.22);
+
+        insert_sorted(deque, static_cast<size_t>(1000));
+        insert_sorted(deque, static_cast<size_t>(1));
+
+        std::cout << vector;
+        std::cout << list;
+        std::cout << deque;
+
+
+        unsigned int amplitude = 3;
+        std::vector<double> analog_signals(100);
+        std::generate(analog_signals.begin()
+                     , analog_signals.end()
+                     , [&amplitude](){ return amplitude * (-1.f + static_cast<double>(rand()) * 2 / RAND_MAX); });
+
+        std::vector<int> digital_signals;
+        digital_signals.reserve(analog_signals.size());
+
+        std::transform(analog_signals.cbegin()
+                      , analog_signals.cend()
+                      , std::back_inserter(digital_signals)
+                      , [](double signal){ return static_cast<int>(signal); });
+
+        std::cout << std::endl << "----analog_signals----" << std::endl;
+
+        //std::cout << analog_signals;
+        copy(analog_signals.cbegin(), analog_signals.cend(), std::ostream_iterator<double>(std::cout, " "));
+        std::cout << std::endl;
+
+        std::cout << std::endl << "----digital_signals----" << std::endl;
+
+        //std::cout << digital_signals;
+        copy(digital_signals.cbegin(), digital_signals.cend(), std::ostream_iterator<int>(std::cout, " "));
+        std::cout << std::endl;
+
+        std::vector<double> errors;
+        errors.reserve(analog_signals.size());
+
+        std::transform(digital_signals.cbegin()
+                      , digital_signals.cend()
+                      , analog_signals.cbegin()
+                      , std::back_inserter(errors)
+                      , [](double digital_signal, double analog_signal){ return digital_signal - analog_signal; });
+
+        std::cout << std::endl << "----errors----" << std::endl;
+
+        std::cout << errors;
+
+        double error = std::inner_product(digital_signals.cbegin()
+                                          , digital_signals.cend()
+                                          , analog_signals.cbegin()
+                                          , 0.f
+                                          , std::plus<double>()
+                                          , [](double digital_signal, double analog_signal){ return (digital_signal - analog_signal) * (digital_signal - analog_signal); });
+
+        std::cout << std::endl << "----error----" << std::endl;
+
+        std::cout << error << std::endl;
     }
 
     return 0;
