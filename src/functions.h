@@ -2,9 +2,11 @@
 
 #include <vector>
 #include <list>
+#include <set>
 #include <algorithm>
 #include <iostream>
 #include <type_traits>
+#include <iterator>
 
 template <typename T>
 void Swap(T* const rh,  T* const lh)
@@ -59,5 +61,20 @@ void insert_sorted(Container<>& data, const T& value)
     data.insert(lower_bound, value);
 }
 
-
 void average(std::list<double>& list);
+
+template <typename InputIt>
+void unique_print(InputIt begin, InputIt end)
+{
+    using Type = typename InputIt::value_type;
+
+    std::set<Type> unique_container(begin, end);
+
+    std::copy(unique_container.cbegin()
+             , unique_container.cend()
+             , std::ostream_iterator<typename InputIt::value_type>(std::cout, " "));
+
+    std::cout << std::endl;
+}
+
+void split_sentence(std::istream& stream);
