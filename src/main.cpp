@@ -357,6 +357,9 @@ int main()
 
         split_sentence(std::cin);
     }
+    {// 6 parallel programming
+
+    }
 
     return 0;
 }
