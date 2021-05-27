@@ -342,6 +342,21 @@ int main()
 
         std::cout << error << std::endl;
     }
+    {// 5 associative containers
+
+        std::cout << std::endl << "----associative containers----" << std::endl;
+
+        std::vector<unsigned int> v1{5, 6, 3, 6, 6, 7, 2, 6, 9, 5, 3, 3, 6, 2};
+        std::deque<float> d1{5.635, 6.356, 4.235, 7.345, 8.545, 3.353, 2.345, 3.454};
+        std::list<int> l1{-44, 32, 11, -44, 9, -44, 11, -44, 32, 9, 11, -45, -23, -23, 9};
+
+        unique_print(v1.begin(), v1.end());
+        unique_print(d1.begin(), d1.end());
+        unique_print(l1.begin(), l1.end());
+
+
+        split_sentence(std::cin);
+    }
 
     return 0;
 }
