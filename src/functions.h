@@ -7,6 +7,8 @@
 #include <iostream>
 #include <type_traits>
 #include <iterator>
+#include <mutex>
+
 
 template <typename T>
 void Swap(T* const rh,  T* const lh)
@@ -77,4 +79,17 @@ void unique_print(InputIt begin, InputIt end)
     std::cout << std::endl;
 }
 
+template <typename T>
+void pcout(std::mutex& m, const T& data)
+{
+    std::lock_guard<std::mutex> m_lg(m);
+    std::cout << data <<std::endl;
+}
+
+void doSomething(int number);
+
 void split_sentence(std::istream& stream);
+
+bool is_prime_number(size_t number);
+
+size_t find_prime_number(size_t prime_number_position);
