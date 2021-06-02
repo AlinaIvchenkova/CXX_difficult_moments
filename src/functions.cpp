@@ -2,6 +2,7 @@
 
 #include <numeric>
 #include <cmath>
+#include <thread>
 
 void average(std::list<double>& list)
 {
@@ -63,25 +64,36 @@ bool is_prime_number(size_t number)
 
 size_t find_prime_number(size_t prime_number_position)
 {
-    size_t num_count = 2, num = 3;
+    size_t num_count = 2, num = 3, prev_percent = 0;
 
-    while (num_count < prime_number_position)
+    std::thread th([&num_count, &prime_number_position, &num, &prev_percent]()
     {
-        if (is_prime_number(num))
+        std::cout << "procgress: " << std::endl;
+
+        while (num_count < prime_number_position)
         {
-            if (++num_count == prime_number_position)
+            if (is_prime_number(num))
             {
-                return num_count;
+                size_t percent = static_cast<size_t>(100.0 * (static_cast<double>(num_count) / prime_number_position));
+                if (percent > prev_percent)
+                {
+                    prev_percent = percent;
+                    std::cout << percent << "%" << std::endl;
+                }
+
+                if (++num_count == prime_number_position)
+                {
+                    std::cout << 100 << "%" << std::endl;
+                    break;
+                }
             }
+
+            ++num;
         }
+    });
 
-        ++num;
-    }
+    th.join();
 
-    return 0;
+    return num_count;
 }
 
-void doSomething(int number) {
-    std::cout << "start thread " << number << std::endl;
-    std::cout << "stop thread " << number << std::endl;
-}

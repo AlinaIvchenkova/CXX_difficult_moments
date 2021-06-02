@@ -372,6 +372,15 @@ int main()
         th2.join();
         th3.join();
 
+
+        //size_t num = find_prime_number(3);
+        //size_t num = find_prime_number(3);
+        size_t num = find_prime_number(1000000);
+
+        std::cout << num << std::endl;
+
+        // сегодня закончу 3
+
     }
 
     return 0;
