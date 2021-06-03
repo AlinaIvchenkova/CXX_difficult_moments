@@ -9,6 +9,15 @@
 #include <iterator>
 #include <mutex>
 
+template <typename T>
+inline T random_(T min, T max)
+{
+    if (min > max){
+        std::swap(min, max);
+    }
+    auto random = static_cast<double>(std::rand()) / RAND_MAX;
+    return min + random * ( max - min );
+}
 
 template <typename T>
 void Swap(T* const rh,  T* const lh)

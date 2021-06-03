@@ -11,7 +11,8 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     phone_book.cpp \
-    functions.cpp
+    functions.cpp \
+    home.cpp
 
 LIBS += -pthread
 
@@ -24,4 +25,5 @@ HEADERS += \
     matrix.h \
     matrix.hpp \
     range.h \
-    range.hpp
+    range.hpp \
+    home.h

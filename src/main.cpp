@@ -3,6 +3,7 @@
 #include "functions.h"
 #include "matrix.h"
 #include "range.h"
+#include "home.h"
 
 #include <iostream>
 #include <vector>
@@ -374,12 +375,18 @@ int main()
 
 
         //size_t num = find_prime_number(3);
-        //size_t num = find_prime_number(3);
-        size_t num = find_prime_number(1000000);
+        size_t num = find_prime_number(3);
+        //size_t num = find_prime_number(1000000);
 
         std::cout << num << std::endl;
 
-        // сегодня закончу 3
+        Home home;
+
+        std::thread th4(&Home::owner_things, &home, 1000);
+        std::thread th5(&Home::thief_things, &home);
+
+        th4.join();
+        th5.join();
 
     }
 
