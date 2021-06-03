@@ -389,6 +389,10 @@ int main()
         th5.join();
 
     }
+    {//  7 namespace and binary serialization
+        std::cout << std::endl << "----namespace and binary serialization----" << std::endl;
+
+    }
 
     return 0;
 }
