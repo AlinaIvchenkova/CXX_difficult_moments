@@ -62,9 +62,9 @@ bool is_prime_number(size_t number)
     return is_prime;
 }
 
-size_t find_prime_number(size_t prime_number_position)
+size_t find_prime_number_th(size_t prime_number_position)
 {
-    size_t num_count = 2, num = 3, prev_percent = 0;
+    size_t num_count = 0, num = 3, prev_percent = 0;
 
     std::thread th([&num_count, &prime_number_position, &num, &prev_percent]()
     {
@@ -94,6 +94,6 @@ size_t find_prime_number(size_t prime_number_position)
 
     th.join();
 
-    return num_count;
+    return num;
 }
 

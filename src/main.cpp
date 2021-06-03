@@ -375,14 +375,14 @@ int main()
 
 
         //size_t num = find_prime_number(3);
-        size_t num = find_prime_number(3);
-        //size_t num = find_prime_number(1000000);
+        //size_t num = find_prime_number(3);
+        size_t num = find_prime_number_th(9);
 
         std::cout << num << std::endl;
 
         Home home;
 
-        std::thread th4(&Home::owner_things, &home, 1000);
+        std::thread th4(&Home::owner_things, &home, 100);
         std::thread th5(&Home::thief_things, &home);
 
         th4.join();

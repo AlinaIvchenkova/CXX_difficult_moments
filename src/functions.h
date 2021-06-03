@@ -101,4 +101,4 @@ void split_sentence(std::istream& stream);
 
 bool is_prime_number(size_t number);
 
-size_t find_prime_number(size_t prime_number_position);
+size_t find_prime_number_th(size_t prime_number_position);
