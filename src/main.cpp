@@ -398,12 +398,13 @@ int main()
         group.addStudent({"Petr", "Petrov"}, {3, 4, 4, 3, 3, 4});
         group.addStudent({"Fedor", "Romashkin", "Fedorovich"}, {5, 5, 5, 5});
 
-       group.Save();
+        group.Save();
 
         StudentsGroup group_de;
         group_de.Open();
 
-        std::cout << group.GetAllInfo();
+        std::cout << group_de.GetAllInfo() << std::endl;
+        std::cout << group_de.GetAllInfo({"Ivan", "Ivanov", "Ivanovich"}) << std::endl;
     }
 
     return 0;

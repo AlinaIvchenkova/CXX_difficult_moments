@@ -4,8 +4,9 @@ CONFIG += console c++17
 #указание использовать компилятор повыше
 #QMAKE_COMPILER = clang-8
 #QMAKE_CC =  clang-8
-#QMAKE_CXX = clang++-8CONFIG -= app_bundle
+#QMAKE_CXX = clang++-8
 
+CONFIG -= app_bundle
 CONFIG -= qt
 #CONFIG += conan_basic_setup
 #include(protobuf_build/conanbuildinfo.pri)

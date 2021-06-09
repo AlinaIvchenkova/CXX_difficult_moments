@@ -111,7 +111,7 @@ std::string StudentsGroup::GetAllInfo() const
         str += GetAllInfo({m_group.students(i).name().first_name()
                           , m_group.students(i).name().second_name()
                           , m_group.students(i).name().has_patronymic() ? std::optional(m_group.students(i).name().patronymic()) : std::nullopt});
-        str += '\n';
+        if (i != m_group.students_size() - 1) str += '\n';
     }
 
     return str;
