@@ -3,6 +3,7 @@
 #include "functions.h"
 #include "matrix.h"
 #include "range.h"
+#include "home.h"
 
 #include <iostream>
 #include <vector>
@@ -12,6 +13,7 @@
 #include <string>
 #include <fstream>
 #include <numeric>
+#include <thread>
 
 #include <locale>
 #include <codecvt>
@@ -342,20 +344,50 @@ int main()
 
         std::cout << error << std::endl;
     }
-    {// 5 associative containers
+//    {// 5 associative containers
 
-        std::cout << std::endl << "----associative containers----" << std::endl;
+//        std::cout << std::endl << "----associative containers----" << std::endl;
 
-        std::vector<unsigned int> v1{5, 6, 3, 6, 6, 7, 2, 6, 9, 5, 3, 3, 6, 2};
-        std::deque<float> d1{5.635, 6.356, 4.235, 7.345, 8.545, 3.353, 2.345, 3.454};
-        std::list<int> l1{-44, 32, 11, -44, 9, -44, 11, -44, 32, 9, 11, -45, -23, -23, 9};
+//        std::vector<unsigned int> v1{5, 6, 3, 6, 6, 7, 2, 6, 9, 5, 3, 3, 6, 2};
+//        std::deque<float> d1{5.635, 6.356, 4.235, 7.345, 8.545, 3.353, 2.345, 3.454};
+//        std::list<int> l1{-44, 32, 11, -44, 9, -44, 11, -44, 32, 9, 11, -45, -23, -23, 9};
 
-        unique_print(v1.begin(), v1.end());
-        unique_print(d1.begin(), d1.end());
-        unique_print(l1.begin(), l1.end());
+//        unique_print(v1.begin(), v1.end());
+//        unique_print(d1.begin(), d1.end());
+//        unique_print(l1.begin(), l1.end());
 
 
-        split_sentence(std::cin);
+//        split_sentence(std::cin);
+//    }
+    {// 6 parallel programming
+
+        std::cout << std::endl << "----parallel programming----" << std::endl;
+
+        std::mutex m;
+
+        std::thread th1(pcout<std::string>, std::ref(m), "tree");
+        std::thread th2(pcout<int>, std::ref(m), 1);
+        std::thread th3(pcout<double>, std::ref(m), 3.2341);
+
+        th1.join();
+        th2.join();
+        th3.join();
+
+
+        //size_t num = find_prime_number(3);
+        //size_t num = find_prime_number(3);
+        size_t num = find_prime_number_th(9);
+
+        std::cout << num << std::endl;
+
+        Home home;
+
+        std::thread th4(&Home::owner_things, &home, 100);
+        std::thread th5(&Home::thief_things, &home);
+
+        th4.join();
+        th5.join();
+
     }
 
     return 0;

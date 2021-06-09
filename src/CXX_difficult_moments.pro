@@ -2,17 +2,19 @@ TEMPLATE = app
 CONFIG += console c++17
 
 #указание использовать компилятор повыше
-QMAKE_COMPILER = clang-8
-QMAKE_CC =  clang-8
-QMAKE_CXX = clang++-8
+#QMAKE_COMPILER = clang-8
+#QMAKE_CC =  clang-8
+#QMAKE_CXX = clang++-8
 
 CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
     phone_book.cpp \
-    functions.cpp
+    functions.cpp \
+    home.cpp
 
+LIBS += -pthread
 
 HEADERS += \
     person.h \
@@ -23,4 +25,5 @@ HEADERS += \
     matrix.h \
     matrix.hpp \
     range.h \
-    range.hpp
+    range.hpp \
+    home.h
