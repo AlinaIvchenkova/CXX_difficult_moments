@@ -1,0 +1,43 @@
+[settings]
+    arch=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++
+    compiler.version=9
+    os=Linux
+
+[requires]
+    protobuf/3.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=x86_64
+    arch_build=x86_64
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++
+    compiler.version=9
+    os=Linux
+    os_build=Linux
+
+[full_requires]
+    protobuf/3.17.1:645a1e1c64ed36f82391f6d395fec125f43abcdd
+    zlib/1.2.11:6af9cc7cb931c5ad942174fd7838eb655717c709
+
+[full_options]
+    protobuf:fPIC=True
+    protobuf:lite=False
+    protobuf:shared=False
+    protobuf:with_rtti=True
+    protobuf:with_zlib=True
+    zlib:fPIC=True
+    zlib:minizip=deprecated
+    zlib:shared=False
+
+[recipe_hash]
+
+
+[env]
+

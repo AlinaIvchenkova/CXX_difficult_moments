@@ -4,6 +4,7 @@
 #include "matrix.h"
 #include "range.h"
 #include "home.h"
+#include "studentsgroup.h"
 
 #include <iostream>
 #include <vector>
@@ -361,33 +362,49 @@ int main()
 //    }
     {// 6 parallel programming
 
-        std::cout << std::endl << "----parallel programming----" << std::endl;
+//        std::cout << std::endl << "----parallel programming----" << std::endl;
 
-        std::mutex m;
+//        std::mutex m;
 
-        std::thread th1(pcout<std::string>, std::ref(m), "tree");
-        std::thread th2(pcout<int>, std::ref(m), 1);
-        std::thread th3(pcout<double>, std::ref(m), 3.2341);
+//        std::thread th1(pcout<std::string>, std::ref(m), "tree");
+//        std::thread th2(pcout<int>, std::ref(m), 1);
+//        std::thread th3(pcout<double>, std::ref(m), 3.2341);
 
-        th1.join();
-        th2.join();
-        th3.join();
+//        th1.join();
+//        th2.join();
+//        th3.join();
 
 
-        //size_t num = find_prime_number(3);
-        //size_t num = find_prime_number(3);
-        size_t num = find_prime_number_th(9);
+//        //size_t num = find_prime_number(3);
+//        //size_t num = find_prime_number(3);
+//        size_t num = find_prime_number_th(9);
 
-        std::cout << num << std::endl;
+//        std::cout << num << std::endl;
 
-        Home home;
+//        Home home;
 
-        std::thread th4(&Home::owner_things, &home, 100);
-        std::thread th5(&Home::thief_things, &home);
+//        std::thread th4(&Home::owner_things, &home, 100);
+//        std::thread th5(&Home::thief_things, &home);
 
-        th4.join();
-        th5.join();
+//        th4.join();
+//        th5.join();
 
+    }
+    {//  7 namespace and binary serialization
+
+        StudentsGroup group;
+
+        group.addStudent({"Ivan", "Ivanov", "Ivanovich"}, {4, 5, 5, 3, 5, 5});
+        group.addStudent({"Petr", "Petrov"}, {3, 4, 4, 3, 3, 4});
+        group.addStudent({"Fedor", "Romashkin", "Fedorovich"}, {5, 5, 5, 5});
+
+        group.Save();
+
+        StudentsGroup group_de;
+        group_de.Open();
+
+        std::cout << group_de.GetAllInfo() << std::endl;
+        std::cout << group_de.GetAllInfo({"Ivan", "Ivanov", "Ivanovich"}) << std::endl;
     }
 
     return 0;

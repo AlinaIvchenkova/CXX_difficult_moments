@@ -8,11 +8,16 @@ CONFIG += console c++17
 
 CONFIG -= app_bundle
 CONFIG -= qt
+#CONFIG += conan_basic_setup
+#include(protobuf_build/conanbuildinfo.pri)
 
 SOURCES += main.cpp \
     phone_book.cpp \
     functions.cpp \
-    home.cpp
+    home.cpp \
+    #car.pb.cc \
+    studentsgroup.pb.cc \
+    studentsgroup.cpp
 
 LIBS += -pthread
 
@@ -26,4 +31,12 @@ HEADERS += \
     matrix.hpp \
     range.h \
     range.hpp \
-    home.h
+    home.h \
+    #car.pb.h \
+    studentsgroup.pb.h \
+    studentsgroup.h
+
+LIBS += -L$$PWD/../../../../../snap/protobuf/current/lib/ -lprotobuf
+
+INCLUDEPATH += $$PWD/../../../../../snap/protobuf/current/include
+DEPENDPATH += $$PWD/../../../../../snap/protobuf/current/include
