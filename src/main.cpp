@@ -406,6 +406,9 @@ int main()
         std::cout << group_de.GetAllInfo() << std::endl;
         std::cout << group_de.GetAllInfo({"Ivan", "Ivanov", "Ivanovich"}) << std::endl;
     }
+    {//  8 tests
+
+    }
 
     return 0;
 }
