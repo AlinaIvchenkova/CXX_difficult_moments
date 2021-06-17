@@ -14,63 +14,50 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_studentsgroup_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FullName_studentsgroup_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_studentsgroup_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Student_studentsgroup_2eproto;
+
+PROTOBUF_PRAGMA_INIT_SEG
 namespace proto_students {
-class FullNameDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<FullName> _instance;
-} _FullName_default_instance_;
-class StudentDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Student> _instance;
-} _Student_default_instance_;
-class StudentsGroupDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<StudentsGroup> _instance;
-} _StudentsGroup_default_instance_;
+constexpr FullName::FullName(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : first_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , second_name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , patronymic_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+struct FullNameDefaultTypeInternal {
+  constexpr FullNameDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~FullNameDefaultTypeInternal() {}
+  union {
+    FullName _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT FullNameDefaultTypeInternal _FullName_default_instance_;
+constexpr Student::Student(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : grade_()
+  , name_(nullptr)
+  , average_grade_(0){}
+struct StudentDefaultTypeInternal {
+  constexpr StudentDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~StudentDefaultTypeInternal() {}
+  union {
+    Student _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT StudentDefaultTypeInternal _Student_default_instance_;
+constexpr StudentsGroup::StudentsGroup(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : students_(){}
+struct StudentsGroupDefaultTypeInternal {
+  constexpr StudentsGroupDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~StudentsGroupDefaultTypeInternal() {}
+  union {
+    StudentsGroup _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT StudentsGroupDefaultTypeInternal _StudentsGroup_default_instance_;
 }  // namespace proto_students
-static void InitDefaultsscc_info_FullName_studentsgroup_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::proto_students::_FullName_default_instance_;
-    new (ptr) ::proto_students::FullName();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_FullName_studentsgroup_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_FullName_studentsgroup_2eproto}, {}};
-
-static void InitDefaultsscc_info_Student_studentsgroup_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::proto_students::_Student_default_instance_;
-    new (ptr) ::proto_students::Student();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_Student_studentsgroup_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_Student_studentsgroup_2eproto}, {
-      &scc_info_FullName_studentsgroup_2eproto.base,}};
-
-static void InitDefaultsscc_info_StudentsGroup_studentsgroup_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::proto_students::_StudentsGroup_default_instance_;
-    new (ptr) ::proto_students::StudentsGroup();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_StudentsGroup_studentsgroup_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_StudentsGroup_studentsgroup_2eproto}, {
-      &scc_info_Student_studentsgroup_2eproto.base,}};
-
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_studentsgroup_2eproto[3];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_studentsgroup_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_studentsgroup_2eproto = nullptr;
@@ -124,23 +111,19 @@ const char descriptor_table_protodef_studentsgroup_2eproto[] PROTOBUF_SECTION_VA
   "students\030\001 \003(\0132\027.proto_students.Studentb"
   "\006proto3"
   ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_studentsgroup_2eproto_deps[1] = {
-};
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_studentsgroup_2eproto_sccs[3] = {
-  &scc_info_FullName_studentsgroup_2eproto.base,
-  &scc_info_Student_studentsgroup_2eproto.base,
-  &scc_info_StudentsGroup_studentsgroup_2eproto.base,
-};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_studentsgroup_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_studentsgroup_2eproto = {
-  false, false, descriptor_table_protodef_studentsgroup_2eproto, "studentsgroup.proto", 287,
-  &descriptor_table_studentsgroup_2eproto_once, descriptor_table_studentsgroup_2eproto_sccs, descriptor_table_studentsgroup_2eproto_deps, 3, 0,
+  false, false, 287, descriptor_table_protodef_studentsgroup_2eproto, "studentsgroup.proto", 
+  &descriptor_table_studentsgroup_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_studentsgroup_2eproto::offsets,
-  file_level_metadata_studentsgroup_2eproto, 3, file_level_enum_descriptors_studentsgroup_2eproto, file_level_service_descriptors_studentsgroup_2eproto,
+  file_level_metadata_studentsgroup_2eproto, file_level_enum_descriptors_studentsgroup_2eproto, file_level_service_descriptors_studentsgroup_2eproto,
 };
+PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_studentsgroup_2eproto_getter() {
+  return &descriptor_table_studentsgroup_2eproto;
+}
 
 // Force running AddDescriptors() at dynamic initialization time.
-static bool dynamic_init_dummy_studentsgroup_2eproto = (static_cast<void>(::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_studentsgroup_2eproto)), true);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_studentsgroup_2eproto(&descriptor_table_studentsgroup_2eproto);
 namespace proto_students {
 
 // ===================================================================
@@ -166,26 +149,25 @@ FullName::FullName(const FullName& from)
   first_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_first_name().empty()) {
     first_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_first_name(), 
-      GetArena());
+      GetArenaForAllocation());
   }
   second_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_second_name().empty()) {
     second_name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_second_name(), 
-      GetArena());
+      GetArenaForAllocation());
   }
   patronymic_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (from._internal_has_patronymic()) {
     patronymic_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_patronymic(), 
-      GetArena());
+      GetArenaForAllocation());
   }
   // @@protoc_insertion_point(copy_constructor:proto_students.FullName)
 }
 
 void FullName::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FullName_studentsgroup_2eproto.base);
-  first_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  second_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  patronymic_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+first_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+second_name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+patronymic_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 FullName::~FullName() {
@@ -195,7 +177,7 @@ FullName::~FullName() {
 }
 
 void FullName::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   first_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   second_name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   patronymic_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -210,11 +192,6 @@ void FullName::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void FullName::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const FullName& FullName::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_FullName_studentsgroup_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void FullName::Clear() {
 // @@protoc_insertion_point(message_clear_start:proto_students.FullName)
@@ -238,7 +215,6 @@ const char* FullName::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
     switch (tag >> 3) {
       // string first_name = 1;
       case 1:
@@ -258,7 +234,7 @@ const char* FullName::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string patronymic = 3;
+      // optional string patronymic = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
           auto str = _internal_mutable_patronymic();
@@ -269,7 +245,8 @@ const char* FullName::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
         continue;
       default: {
       handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -297,7 +274,7 @@ failure:
   (void) cached_has_bits;
 
   // string first_name = 1;
-  if (this->first_name().size() > 0) {
+  if (!this->first_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_first_name().data(), static_cast<int>(this->_internal_first_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -307,7 +284,7 @@ failure:
   }
 
   // string second_name = 2;
-  if (this->second_name().size() > 0) {
+  if (!this->second_name().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_second_name().data(), static_cast<int>(this->_internal_second_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
@@ -316,7 +293,7 @@ failure:
         2, this->_internal_second_name(), target);
   }
 
-  // string patronymic = 3;
+  // optional string patronymic = 3;
   if (_internal_has_patronymic()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_patronymic().data(), static_cast<int>(this->_internal_patronymic().length()),
@@ -343,20 +320,20 @@ size_t FullName::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // string first_name = 1;
-  if (this->first_name().size() > 0) {
+  if (!this->first_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_first_name());
   }
 
   // string second_name = 2;
-  if (this->second_name().size() > 0) {
+  if (!this->second_name().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_second_name());
   }
 
-  // string patronymic = 3;
+  // optional string patronymic = 3;
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
@@ -395,10 +372,10 @@ void FullName::MergeFrom(const FullName& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.first_name().size() > 0) {
+  if (!from.first_name().empty()) {
     _internal_set_first_name(from._internal_first_name());
   }
-  if (from.second_name().size() > 0) {
+  if (!from.second_name().empty()) {
     _internal_set_second_name(from._internal_second_name());
   }
   if (from._internal_has_patronymic()) {
@@ -426,17 +403,30 @@ bool FullName::IsInitialized() const {
 
 void FullName::InternalSwap(FullName* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  first_name_.Swap(&other->first_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  second_name_.Swap(&other->second_name_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  patronymic_.Swap(&other->patronymic_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &first_name_, GetArenaForAllocation(),
+      &other->first_name_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &second_name_, GetArenaForAllocation(),
+      &other->second_name_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &patronymic_, GetArenaForAllocation(),
+      &other->patronymic_, other->GetArenaForAllocation()
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata FullName::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_studentsgroup_2eproto_getter, &descriptor_table_studentsgroup_2eproto_once,
+      file_level_metadata_studentsgroup_2eproto[0]);
 }
-
 
 // ===================================================================
 
@@ -470,11 +460,10 @@ Student::Student(const Student& from)
 }
 
 void Student::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Student_studentsgroup_2eproto.base);
-  ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-      reinterpret_cast<char*>(&name_) - reinterpret_cast<char*>(this)),
-      0, static_cast<size_t>(reinterpret_cast<char*>(&average_grade_) -
-      reinterpret_cast<char*>(&name_)) + sizeof(average_grade_));
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&name_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&average_grade_) -
+    reinterpret_cast<char*>(&name_)) + sizeof(average_grade_));
 }
 
 Student::~Student() {
@@ -484,7 +473,7 @@ Student::~Student() {
 }
 
 void Student::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   if (this != internal_default_instance()) delete name_;
 }
 
@@ -497,11 +486,6 @@ void Student::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void Student::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const Student& Student::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Student_studentsgroup_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void Student::Clear() {
 // @@protoc_insertion_point(message_clear_start:proto_students.Student)
@@ -510,7 +494,7 @@ void Student::Clear() {
   (void) cached_has_bits;
 
   grade_.Clear();
-  if (GetArena() == nullptr && name_ != nullptr) {
+  if (GetArenaForAllocation() == nullptr && name_ != nullptr) {
     delete name_;
   }
   name_ = nullptr;
@@ -523,7 +507,6 @@ const char* Student::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
     switch (tag >> 3) {
       // .proto_students.FullName name = 1;
       case 1:
@@ -551,7 +534,8 @@ const char* Student::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
         continue;
       default: {
       handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -621,9 +605,6 @@ size_t Student::ByteSizeLong() const {
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
             static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
     }
-    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
-    _grade_cached_byte_size_.store(cached_size,
-                                    std::memory_order_relaxed);
     total_size += data_size;
   }
 
@@ -699,7 +680,7 @@ bool Student::IsInitialized() const {
 
 void Student::InternalSwap(Student* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   grade_.InternalSwap(&other->grade_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Student, average_grade_)
@@ -710,9 +691,10 @@ void Student::InternalSwap(Student* other) {
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Student::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_studentsgroup_2eproto_getter, &descriptor_table_studentsgroup_2eproto_once,
+      file_level_metadata_studentsgroup_2eproto[1]);
 }
-
 
 // ===================================================================
 
@@ -735,7 +717,6 @@ StudentsGroup::StudentsGroup(const StudentsGroup& from)
 }
 
 void StudentsGroup::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_StudentsGroup_studentsgroup_2eproto.base);
 }
 
 StudentsGroup::~StudentsGroup() {
@@ -745,7 +726,7 @@ StudentsGroup::~StudentsGroup() {
 }
 
 void StudentsGroup::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
 void StudentsGroup::ArenaDtor(void* object) {
@@ -757,11 +738,6 @@ void StudentsGroup::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
 void StudentsGroup::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const StudentsGroup& StudentsGroup::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_StudentsGroup_studentsgroup_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void StudentsGroup::Clear() {
 // @@protoc_insertion_point(message_clear_start:proto_students.StudentsGroup)
@@ -778,7 +754,6 @@ const char* StudentsGroup::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
     switch (tag >> 3) {
       // repeated .proto_students.Student students = 1;
       case 1:
@@ -794,7 +769,8 @@ const char* StudentsGroup::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_
         continue;
       default: {
       handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
           ctx->SetLastTag(tag);
           goto success;
         }
@@ -905,14 +881,15 @@ bool StudentsGroup::IsInitialized() const {
 
 void StudentsGroup::InternalSwap(StudentsGroup* other) {
   using std::swap;
-  _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   students_.InternalSwap(&other->students_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata StudentsGroup::GetMetadata() const {
-  return GetMetadataStatic();
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_studentsgroup_2eproto_getter, &descriptor_table_studentsgroup_2eproto_once,
+      file_level_metadata_studentsgroup_2eproto[2]);
 }
-
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace proto_students
