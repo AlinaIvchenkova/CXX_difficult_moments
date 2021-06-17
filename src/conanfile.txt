@@ -1,5 +1,9 @@
 [requires]
 protobuf/3.17.1
-
+#protoc_installer/3.17.1
+ 
+[options]
+ 
 [generators]
-qmake
+cmake
+
